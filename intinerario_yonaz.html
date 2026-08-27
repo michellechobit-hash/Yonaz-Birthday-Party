@@ -133,6 +133,19 @@
   .btn.secondary{color:#f7fbff;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.32);box-shadow:none}
   .btn.main-link{font-size:1.05rem;box-shadow:0 0 34px rgba(42,214,255,.65), 0 0 16px rgba(255,255,255,.22)}
 
+  .music-mini{
+    width:min(320px,100%);
+    margin:0 auto 12px;
+    padding:8px 10px;
+    border-radius:18px;
+    border:1px solid rgba(126,238,255,.42);
+    background:rgba(0,0,0,.20);
+    box-shadow:0 0 16px rgba(42,214,255,.14);
+    text-align:center;
+  }
+  .music-mini b{display:block;color:#7eeeff;font-size:.78rem;margin-bottom:6px;letter-spacing:.04em}
+  .music-mini audio{width:100%;height:36px;filter:drop-shadow(0 0 8px rgba(126,238,255,.18))}
+
   main{padding:8px 34px 34px}
   .timeline{
     width:min(880px,100%);
@@ -245,6 +258,13 @@
   <div class="wrap">
     <div class="shell">
       <header>
+        <div class="music-mini">
+          <b>🎵 Dale play para prender el pachangón</b>
+          <audio id="itineraryAudio" controls preload="metadata">
+            <source src="musica-intinerario.mp3" type="audio/mpeg">
+            Tu navegador no soporta audio.
+          </audio>
+        </div>
         <div class="badge">💙 ¿ESTÁS LISTO PARA EL PACHANGÓN??</div>
         <h1>INTINERARIO <span>YONAZ BIRTHDAY PARTY</span></h1>
         <p class="subtitle">Sábado 29 de agosto · A partir de las 2:00 p.m. · Ajusco Santo Tomás, Tlalpan</p>
@@ -343,6 +363,22 @@
       showToast('No se pudo copiar automáticamente');
     }
   }
+
+  const itineraryAudio = document.getElementById('itineraryAudio');
+  if(itineraryAudio){
+    const startAt = 64;
+    itineraryAudio.addEventListener('loadedmetadata', () => {
+      if(itineraryAudio.duration > startAt){
+        itineraryAudio.currentTime = startAt;
+      }
+    });
+    itineraryAudio.addEventListener('play', () => {
+      if(itineraryAudio.currentTime < startAt - 1){
+        itineraryAudio.currentTime = startAt;
+      }
+    });
+  }
+
 </script>
 </body>
 </html>

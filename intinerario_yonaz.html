@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Intinerario Fiesta Yonaz</title>
+<meta name="description" content="Intinerario digital de la fiesta de Yonaz. Sábado 29 de agosto, 2:00 p.m.">
+<style>
+  :root{
+    --night:#020817;
+    --ink:#07111f;
+    --blue:#2ad6ff;
+    --electric:#006eff;
+    --metal:#a9c7df;
+    --silver:#eef8ff;
+    --line:rgba(201,233,255,.34);
+    --hot:#63f7ff;
+    --card:rgba(3,17,39,.72);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    min-height:100vh;
+    color:#f7fbff;
+    font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background:
+      radial-gradient(circle at 14% 8%, rgba(42,214,255,.42), transparent 25%),
+      radial-gradient(circle at 90% 8%, rgba(0,110,255,.34), transparent 27%),
+      radial-gradient(circle at 50% 95%, rgba(169,199,223,.22), transparent 30%),
+      linear-gradient(135deg, #030611 0%, #061d3f 50%, #01030b 100%);
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+      linear-gradient(115deg, transparent 0 38%, rgba(255,255,255,.10) 45%, transparent 54% 100%),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 80px),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 80px);
+    mix-blend-mode:screen;
+    animation:shine 9s linear infinite;
+  }
+  @keyframes shine{from{background-position:-300px 0,0 0,0 0}to{background-position:900px 0,0 0,0 0}}
+
+  .lights{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+  .beam{
+    position:absolute;
+    width:18vw;
+    height:130vh;
+    top:-20vh;
+    border-radius:999px;
+    background:linear-gradient(to bottom, transparent, rgba(42,214,255,.18), transparent);
+    filter:blur(7px);
+    transform-origin:top center;
+    animation:sweep 6s ease-in-out infinite alternate;
+  }
+  .beam:nth-child(1){left:13%;transform:rotate(20deg);animation-delay:-1s}
+  .beam:nth-child(2){left:47%;transform:rotate(-12deg);animation-delay:-3s;background:linear-gradient(to bottom, transparent, rgba(0,110,255,.22), transparent)}
+  .beam:nth-child(3){right:10%;transform:rotate(-24deg);animation-delay:-2s}
+  @keyframes sweep{to{transform:rotate(32deg) translateX(40px)}}
+
+  .wrap{width:min(1080px,94vw);margin:0 auto;padding:28px 0 42px;position:relative;z-index:1}
+  .shell{
+    border:1px solid rgba(238,248,255,.45);
+    border-radius:34px;
+    overflow:hidden;
+    background:linear-gradient(145deg, rgba(255,255,255,.16), rgba(255,255,255,.04));
+    box-shadow:0 30px 80px rgba(0,0,0,.42), inset 0 0 45px rgba(42,214,255,.10), 0 0 40px rgba(42,214,255,.20);
+    backdrop-filter:blur(12px);
+  }
+  header{
+    padding:38px 28px 24px;
+    text-align:center;
+    position:relative;
+  }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:10px 14px;
+    border-radius:999px;
+    border:1px solid rgba(238,248,255,.38);
+    background:linear-gradient(90deg, rgba(42,214,255,.22), rgba(255,255,255,.12), rgba(0,110,255,.20));
+    font-weight:900;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#dff8ff;
+    box-shadow:0 0 22px rgba(42,214,255,.28);
+  }
+  h1{
+    margin:18px 0 8px;
+    font-size:clamp(2.7rem, 9vw, 6.4rem);
+    line-height:.92;
+    text-transform:uppercase;
+    letter-spacing:-.03em;
+    color:#eef8ff;
+    text-shadow:0 0 8px #fff, 0 0 22px var(--blue), 0 0 50px rgba(0,110,255,.65), 6px 6px 0 rgba(0,0,0,.38);
+  }
+  h1 span{display:block;color:#63f7ff;letter-spacing:.09em;font-size:.36em;margin-top:12px;text-shadow:0 0 14px rgba(99,247,255,.9)}
+  .subtitle{
+    margin:12px auto 0;
+    max-width:720px;
+    font-size:clamp(1.02rem,2.2vw,1.35rem);
+    line-height:1.45;
+    font-weight:800;
+    color:#e7f7ff;
+  }
+
+  .top-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:24px auto 0}
+  .btn{
+    appearance:none;
+    border:none;
+    text-decoration:none;
+    cursor:pointer;
+    color:#061326;
+    font-weight:1000;
+    border-radius:999px;
+    padding:15px 20px;
+    background:linear-gradient(90deg,#eef8ff,#2ad6ff,#006eff,#eef8ff);
+    box-shadow:0 0 28px rgba(42,214,255,.50);
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    transition:.2s ease;
+  }
+  .btn:hover{transform:translateY(-2px) scale(1.01)}
+  .btn.secondary{color:#f7fbff;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.32);box-shadow:none}
+  .btn.main-link{font-size:1.05rem;box-shadow:0 0 34px rgba(42,214,255,.65), 0 0 16px rgba(255,255,255,.22)}
+
+  main{padding:8px 34px 34px}
+  .timeline{
+    width:min(880px,100%);
+    margin:16px auto 0;
+    position:relative;
+    display:grid;
+    gap:16px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    top:18px;
+    bottom:18px;
+    left:34px;
+    width:4px;
+    border-radius:999px;
+    background:linear-gradient(var(--blue), var(--electric), var(--silver));
+    box-shadow:0 0 18px rgba(42,214,255,.75);
+    opacity:.78;
+  }
+  .event-card{
+    position:relative;
+    display:grid;
+    grid-template-columns:70px minmax(0,1fr);
+    gap:16px;
+    align-items:center;
+    padding:18px;
+    border-radius:28px;
+    border:1px solid var(--line);
+    background:linear-gradient(135deg,rgba(42,214,255,.16),rgba(255,255,255,.07),rgba(0,110,255,.12));
+    box-shadow:inset 0 0 16px rgba(255,255,255,.07), 0 18px 40px rgba(0,0,0,.24);
+    overflow:hidden;
+  }
+  .event-card::after{
+    content:"";
+    position:absolute;
+    inset:-2px;
+    background:radial-gradient(circle at 22% 50%, rgba(126,238,255,.22), transparent 28%);
+    opacity:.8;
+    pointer-events:none;
+  }
+  .icon{
+    width:70px;
+    height:70px;
+    border-radius:22px;
+    display:grid;
+    place-items:center;
+    font-size:2rem;
+    color:#061326;
+    background:linear-gradient(145deg,#ffffff,#9fdcff 38%,#2ad6ff 62%,#e7f7ff);
+    box-shadow:0 0 26px rgba(42,214,255,.46), inset 0 0 18px rgba(255,255,255,.6);
+    position:relative;
+    z-index:1;
+  }
+  .event-main{position:relative;z-index:1}
+  .time{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 12px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.26);
+    background:rgba(0,0,0,.25);
+    color:#9af0ff;
+    font-weight:950;
+    letter-spacing:.04em;
+    margin-bottom:8px;
+  }
+  .event-main strong{
+    display:block;
+    font-size:clamp(1.18rem,2.6vw,1.65rem);
+    text-transform:uppercase;
+    text-shadow:0 0 14px rgba(42,214,255,.65);
+  }
+  .event-main p{
+    margin:8px 0 0;
+    color:#ddf7ff;
+    line-height:1.5;
+    font-weight:650;
+  }
+  .final{
+    width:min(880px,100%);
+    margin:22px auto 0;
+    padding:22px;
+    border-radius:30px;
+    text-align:center;
+    border:1px solid var(--line);
+    background:linear-gradient(90deg, rgba(42,214,255,.20), rgba(255,255,255,.08), rgba(0,110,255,.18));
+    box-shadow:0 0 30px rgba(42,214,255,.22);
+  }
+  .final strong{display:block;font-size:clamp(1.45rem,3.2vw,2.2rem);text-transform:uppercase;text-shadow:0 0 16px rgba(42,214,255,.8)}
+  .final p{margin:8px 0 0;color:#ddf7ff;font-weight:750}
+  footer{text-align:center;color:rgba(255,255,255,.72);font-weight:700;margin:24px 0 4px;font-size:.9rem}
+  .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(28px);background:rgba(0,0,0,.84);border:1px solid rgba(255,255,255,.35);color:#fff;padding:12px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s ease;z-index:10}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:760px){
+    .wrap{width:100%;padding:0}
+    .shell{border-radius:0;border-left:none;border-right:none}
+    header{padding:28px 16px 18px}
+    main{padding:0 16px 28px}
+    .timeline::before{left:27px}
+    .event-card{grid-template-columns:56px minmax(0,1fr);gap:12px;padding:15px}
+    .icon{width:56px;height:56px;border-radius:18px;font-size:1.65rem}
+    .btn.main-link{width:100%;justify-content:center}
+  }
+</style>
+</head>
+<body>
+  <div class="lights" aria-hidden="true"><span class="beam"></span><span class="beam"></span><span class="beam"></span></div>
+  <div class="wrap">
+    <div class="shell">
+      <header>
+        <div class="badge">💙 ¿ESTÁS LISTO PARA EL PACHANGÓN??</div>
+        <h1>INTINERARIO <span>YONAZ BIRTHDAY PARTY</span></h1>
+        <p class="subtitle">Sábado 29 de agosto · A partir de las 2:00 p.m. · Ajusco Santo Tomás, Tlalpan</p>
+        <div class="top-actions">
+          <a class="btn main-link" href="https://michellechobit-hash.github.io/Yonaz-Birthday-Party/" target="_blank" rel="noopener noreferrer">🎉 Ver tarjeta principal</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="timeline" aria-label="Intinerario de la fiesta">
+          <article class="event-card">
+            <div class="icon">🕑</div>
+            <div class="event-main">
+              <div class="time">2:00 p.m.</div>
+              <strong>Inicio de la fiesta</strong>
+              <p>Llegada de invitados, saludos, primeras bebidas y arranque del ambiente.</p>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="icon">🌮</div>
+            <div class="event-main">
+              <div class="time">3:00 p.m. - 6:00 p.m.</div>
+              <strong>Comida y micheladas</strong>
+              <p>Para ir agarrando energía, brindar y entrar en modo fiesta.</p>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="icon">🎤</div>
+            <div class="event-main">
+              <div class="time">3:00 p.m. - 5:00 p.m.</div>
+              <strong>Primer cantante</strong>
+              <p>Música en vivo para empezar a calentar motores.</p>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="icon">🎶</div>
+            <div class="event-main">
+              <div class="time">5:00 p.m. - 6:00 p.m.</div>
+              <strong>Segundo cantante</strong>
+              <p>Más música, más ambiente y más buena vibra.</p>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="icon">🕺</div>
+            <div class="event-main">
+              <div class="time">6:00 p.m. - 8:00 p.m.</div>
+              <strong>Baile y reventón</strong>
+              <p>Se abre oficialmente la pista para bailar, cantar y sacar los mejores pasos.</p>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="icon">🎂</div>
+            <div class="event-main">
+              <div class="time">8:00 p.m. en adelante</div>
+              <strong>Pastel y karaoke</strong>
+              <p>Canto de cumpleaños, pastel y karaoke para cerrar la noche como se debe.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="final">
+          <strong>¡Te esperamos para echar mucho reven!</strong>
+          <p>Y para festejar a Yonaz como se debe. 💙</p>
+          <div class="top-actions">
+            <a class="btn main-link" href="https://michellechobit-hash.github.io/Yonaz-Birthday-Party/" target="_blank" rel="noopener noreferrer">🎉 Regresar a la tarjeta principal</a>
+          </div>
+        </section>
+        <footer>LIVE THE YONAZ VIBE · Intinerario de la fiesta</footer>
+      </main>
+    </div>
+  </div>
+  <div class="toast" id="toast">Listo</div>
+
+<script>
+  function showToast(text){
+    const toast=document.getElementById('toast');
+    toast.textContent=text;
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'),2200);
+  }
+
+  function itineraryText(){
+    return `💙 INTINERARIO DE LA FIESTA 💙\n✨ YONAZ BIRTHDAY PARTY ✨\n\n📅 Sábado 29 de agosto\n⏰ A partir de las 2:00 p.m.\n\n🕑 2:00 p.m.\nInicio de la fiesta.\n\n🌮🍺 3:00 p.m. - 6:00 p.m.\nComida y micheladas.\n\n🎤 3:00 p.m. - 5:00 p.m.\nPrimer cantante.\n\n🎶 5:00 p.m. - 6:00 p.m.\nSegundo cantante.\n\n🕺💃 6:00 p.m. - 8:00 p.m.\nBaile y reventón.\n\n🎂🎤 8:00 p.m. en adelante\nPastel y karaoke.\n\n✨ ¡Te esperamos para echar mucho reven y festejar a Yonaz! 💙`;
+  }
+
+  async function copyItinerary(){
+    try{
+      await navigator.clipboard.writeText(itineraryText());
+      showToast('Intinerario copiado');
+    }catch(e){
+      showToast('No se pudo copiar automáticamente');
+    }
+  }
+</script>
+</body>
+</html>
